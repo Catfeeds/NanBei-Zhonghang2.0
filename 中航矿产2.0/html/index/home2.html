@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>首页</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/reset.css" />
+		<link rel="stylesheet" href="../../css/home0.css" />
+		<script src="../../js/common.js"></script>
+	</head>
+
+	<body>
+		<div class="mui-content">
+		    <div id="slider" class="mui-slider" >
+			  <div class="mui-slider-group mui-slider-loop">
+			    <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+			    <div class="mui-slider-item mui-slider-item-duplicate">
+			      <a href="#">
+			        <img src="../../res/home0/banner1.png">
+			      </a>
+			    </div>
+			    <!-- 第一张 -->
+			    <div class="mui-slider-item">
+			      <a href="#">
+			        <img src="../../res/home0/banner1.png">
+			      </a>
+			    </div>
+			    <!-- 第二张 -->
+			    <div class="mui-slider-item">
+			      <a href="#">
+			        <img src="../../res/home0/banner1.png">
+			      </a>
+			    </div>
+			    <!-- 第三张 -->
+			    <div class="mui-slider-item">
+			      <a href="#">
+			        <img src="../../res/home0/banner1.png">
+			      </a>
+			    </div>
+			    <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+			    <div class="mui-slider-item mui-slider-item-duplicate">
+			      <a href="#">
+			        <img src="../../res/home0/banner1.png">
+			      </a>
+			    </div>
+			  </div>
+			  <div class="mui-slider-indicator">
+			    <div class="mui-indicator mui-active"></div>
+			    <div class="mui-indicator"></div>
+			    <div class="mui-indicator"></div>
+			  </div>
+			</div>
+			
+			<div class="content">
+				<ul class="application">
+					<li><img src="../../res/home0/statistics.png" alt="" /><span>业务统计</span></li>
+					<li><img src="../../res/home0/Email.png" alt="" /><span>邮件管理</span></li>
+					<li><img src="../../res/home0/schedule.png" alt="" /><span>日程安排</span></li>
+					<li><img src="../../res/home0/communication.png" alt="" /><span>企业通讯</span></li>
+				</ul>
+				<ul class="application">
+					<li><img src="../../res/home0/news.png" alt="" /><span>企业新闻</span></li>
+					<li><img src="../../res/home0/add.png" alt="" /><span>添加应用</span></li>
+				</ul>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui.ready(function(){
+				//获得slider插件对象
+				var gallery = mui('.mui-slider');
+				gallery.slider({
+				  interval:1000//自动轮播周期，若为0则不自动播放，默认为0；
+				});
+				
+				mui('.content').on('tap','.application:nth-child(1)>li:first-child',function(){
+					mui.openWindow({
+						url:'../index-APP/check.html',
+						id:'../index-APP/check.html'
+					})
+				});
+				mui('.content').on('tap','.application:nth-child(1)>li:nth-child(2)',function(){
+					mui.openWindow({
+						url:'../index-APP/Email.html',
+						id:'../index-APP/Email.html'
+					})
+				});
+				mui('.content').on('tap','.application:nth-child(1)>li:nth-child(3)',function(){
+					mui.openWindow({
+						url:'../index-APP/schdule.html',
+						id:'../index-APP/schdule.html'
+					})
+				});
+				mui('.content').on('tap','.application:nth-child(1)>li:nth-child(4)',function(){
+					mui.openWindow({
+						url:'../index-APP/contacts.html',
+						id:'../index-APP/contacts.html'
+					})
+				});
+				mui('.content').on('tap','.application:nth-child(2)>li:first-child',function(){
+					mui.openWindow({
+						url:'../index-APP/news.html',
+						id:'../index-APP/news.html'
+					})
+				});
+			});
+		</script>
+	</body>
+
+</html>

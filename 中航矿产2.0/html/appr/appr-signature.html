@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>输入签名</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/reset.css" />
+		<script src="../../js/common.js"></script>
+		<style>
+			.mui-bar-tab{
+				background: #545454;
+			}
+			.mui-tab-item>.mui-tab-label{
+				color: #FFFFFF;
+				text-align: right;
+				padding-right: 0.3rem;
+			}
+			.js-signature{
+				/*background: #FFFFFF;
+				border: 1px solid #969696;
+				box-shadow: 0 2px 4px 0 rgba(84,84,84,0.80);*/
+			}
+			.fixed{
+				width: 0.66rem;height: 1.66rem;
+				overflow: hidden;
+				position: fixed;
+				top: 1.2rem;
+				right: 0.42rem;
+				z-index: 2;
+			}
+			.fixed>li{
+				width: 0.66rem;height: 0.66rem;
+				border-radius: 50%;
+				margin-bottom: 0.34rem;
+				padding: 0.1rem;
+				border: 1px solid #FFFFFF;
+			}
+			.fixed>li.sel{
+				border: 1px solid #969696;
+			}
+			.fixed>li>span{
+				width: 0.44rem;height: 0.44rem;
+				border-radius: 50%;
+			}
+			.fixed>li>#red{
+				background-color: red;
+			}
+			.fixed>li>#black{
+				background-color: black;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-pull-left">返回</a>
+		    <h1 class="mui-title">输入签名</h1>
+		</header>
+		<div class="mui-content">
+		    <div class="js-signature" id="myCanvas"
+			     data-width="600"
+			     data-height="640"
+			     data-border="1px solid #ffffff"
+			     data-background="#ffffff"
+			     data-line-color="red"
+			     data-auto-fit="true"
+			     data-line-width="3">
+			</div>  
+			<div id="signature"></div>  
+		</div>
+		<!--笔触颜色-->
+		<!--<ul class="fixed">
+			<li class="sel"><span id="red"></span></li>
+			<li><span id="black"></span></li>
+		</ul>-->
+		<nav class="mui-bar mui-bar-tab">
+		    <a class="mui-tab-item mui-action-back" style="text-align: left;padding-left: 0.3rem;">
+		        <span class="mui-tab-label">放弃</span>
+		    </a>
+		    <a class="mui-tab-item">
+		        <span id="clearBtn" class="mui-tab-label">重写</span>
+		    </a>
+		    <a class="mui-tab-item" style="text-align: right;">
+		        <span id="saveBtn" class="mui-tab-label" disabled>确认</span>
+		    </a>
+		</nav>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/jquery@1.7.1.min.js"></script>
+		<script src="../../js/jq-signature.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			
+			$(document).on('ready', function() {
+			  $('.js-signature').jqSignature();
+			});
+			 
+			$('#clearBtn').on('tap',clearCanvas);
+			function clearCanvas() {
+			  //$('#signature').html('<p><em>确认后图片保存在这里</em></p>');
+			  $('.js-signature').jqSignature('clearCanvas');
+			  $('#saveBtn').attr('disabled', true);
+			}
+			
+			$('#saveBtn').on('tap',saveSignature);
+			function saveSignature() {
+			  $('#signature').empty();
+			  var dataUrl = $('.js-signature').jqSignature('getDataURL');
+			  var img = $('<img>').attr('src', dataUrl);
+			  //$('#signature').append($('<p>').text("这里是你的签名:"));
+			  //图片先存到下面
+			  $('#signature').append(img);
+			  //存到服务器上去
+			  $.ajax({
+			  	type:"post",
+			  	url:"",
+			  	async:true,
+			  	success:function(){
+			  		
+			  	},
+			  	error:function(){
+			  		
+			  	}
+			  });
+			}
+			
+			$('.js-signature').on('jq.signature.changed', function() {
+				$('#saveBtn').attr('disabled', false);
+			});          
+//			$('.fixed>li').on('tap',function(){
+//				var index = $(this).index();
+//				$(this).addClass('sel').siblings().removeClass('sel');
+//				
+//				if (index == 0) {
+//					$('.js-signature').jqSignature({
+//						lineColor:'red'
+//					});
+//				} else{
+//					$('.js-signature').jqSignature({
+//						lineColor:'#000000'
+//					}); 
+//				}
+//			})
+		</script>
+	</body>
+
+</html>

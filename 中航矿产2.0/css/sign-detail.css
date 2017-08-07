@@ -1,0 +1,93 @@
+.gelocation{
+	position: relative;
+	width: 6.9rem;height: 4.5rem;
+	background: #FFFFFF;
+	box-shadow: 0 1px 2px 0 rgba(0,0,0,0.50);
+	border-radius: 2px;
+	padding: 0.1rem;
+	margin: 0.3rem;
+	overflow: hidden;
+}
+#map{
+	width: 6.7rem;height: 4.3rem;
+	background: url(../res/home3/signDetail.png) center center no-repeat;
+	background-size: 100% 100%;
+}
+.gelocation>.tips{
+	width: 6.7rem;height: 0.7rem;
+	position: absolute;
+	bottom: 0.1rem;
+	right: 0.1rem;
+	background: rgba(255,255,255,0.7);
+	overflow: hidden;
+	padding: 0.18rem 0.1rem;
+}
+#name{
+	float: left;
+	font-size: 0.34rem;
+	color: #323232;
+}
+#addrChange{
+	float: right;
+	font-size: 0.3rem;
+	color: #969696;
+}
+.time{
+	width: 100%;line-height: 0.32rem;
+	margin-top: 0.4rem;
+	padding: 0 0.2rem;
+}
+
+.timeSign{
+	width: 6.9rem;min-height: 2.12rem;
+	margin: 0.3rem auto 0;
+	overflow: hidden;
+	position: relative;
+	padding: 0.3rem 0 0.3rem 0.3rem;
+	background: #FFFFFF;
+	box-shadow: 0 1px 2px 0 rgba(0,0,0,0.50);
+	border-radius: 2px;
+}
+.timeSign>.timeTit{
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-size: 0.34rem;
+	color: #323232;
+	font-weight: bold;
+	margin-left: 0.3rem;margin-top: 0.3rem;
+}
+.timeBody{
+	width: 100%;height: auto;
+	
+}
+.timeBody>span{
+	width: 1.48rem;
+	line-height: 1.52rem;
+	font-size: 0.4rem;
+	color: #646464;
+	float: left;
+	margin-top: 0.2rem;
+}
+.timeBody>.hrefRight{
+	float: right;
+	width: 5.12rem;
+	padding-right: 0.3rem;
+	margin-top: 0.1rem;
+}
+.timeBody>.hrefRight>span:first-child{
+	font-size: 0.34rem;
+	color: #646464;
+	margin-top: 0.55rem;
+	float: left;
+}
+.timeBody>.hrefRight>img{
+	width: 0.3rem;height: 0.3rem;
+	float: right;
+	margin-top: 0.55rem;
+}
+.timeBody>.hrefRight>span:last-child{
+	font-size: 0.28rem;
+	color: #646464;
+	margin-top: 0.1rem;
+}

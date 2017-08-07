@@ -1,0 +1,177 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>地点微调</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/reset.css" />
+		<script src="../../js/common.js"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=6csB1imP6dVtbLA10q2MtxwNKD6UA3lC"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=CNSUQHW6qnCK0GvcIFT2r5iBcSdr0GAT"></script>
+		<style>
+			.gelocation{
+				position: relative;
+				width: 6.9rem;height: 4.5rem;
+				background: #FFFFFF;
+				box-shadow: 0 1px 2px 0 rgba(0,0,0,0.50);
+				border-radius: 2px;
+				padding: 0.1rem;
+				margin: 0.3rem;
+				overflow: hidden;
+			}
+			#map{
+				width: 6.7rem;height: 4.3rem;
+			}
+			.gelocation>.tips{
+				width: 6.7rem;height: 0.7rem;
+				position: absolute;
+				bottom: 0.1rem;
+				right: 0.1rem;
+				overflow: hidden;
+				padding: 0.18rem 0.1rem;
+			}
+			.tips>img{
+				width: 0.54rem;height: 0.54rem;
+			}
+			#address{
+				width: 6.9rem;height: auto;
+				margin: 0 auto;
+				overflow: hidden;
+				background: #FFFFFF;
+				padding: 0 0.2rem;
+			}
+			#address>li{
+				width: 100%;min-height: 1.12rem;
+				border-bottom: 1px solid #DADADA;
+			}
+			#address>li>span{
+				display: block;
+				font-size: 0.34rem;
+				color: #646464;
+				margin-top: 0.25rem;
+			}
+			#address>li>.ll{
+				width: 100%;
+				height: auto;
+				overflow: hidden;
+			}
+			#address>li>.ll>span{
+				float: left;
+				width: 80%;
+				font-size: 0.28rem;
+				color: #646464;
+			}
+			#address>li>.ll>img{
+				width: 0.4rem;height: 0.4rem;
+				float: right;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-pull-left mui-action-back">返回</a>
+		    <h1 class="mui-title">地点微调</h1>
+		</header>
+		<div class="mui-content">
+		    <div class="gelocation">
+    			<div id="map"></div>
+    			<div class="tips">
+    				<img src="../../res/home3/addReset.png" alt="" />
+    			</div>
+    		</div>
+    		
+    		<ul id="address">
+    			<li>
+    				<span>凯喜雅大厦</span>
+    				<div class="ll">
+    					<span>浙江省杭州市下城区体育场路105号</span>
+    					<img src="../../res/home3/addr-sel.png" alt="" />
+    				</div>
+    			</li>
+    			<li>
+    				<span>凯喜雅大厦</span>
+    				<div class="ll">
+    					<span>浙江省杭州市下城区体育场路105号</span>
+    					<img src="../../res/home3/addr-sel.png" alt="" />
+    				</div>
+    			</li>
+    			<li>
+    				<span>凯喜雅大厦</span>
+    				<div class="ll">
+    					<span>浙江省杭州市下城区体育场路105号</span>
+    					<img src="../../res/home3/addr-sel.png" alt="" />
+    				</div>
+    			</li>
+    			<li>
+    				<span>凯喜雅大厦</span>
+    				<div class="ll">
+    					<span>浙江省杭州市下城区体育场路105号</span>
+    					<img src="../../res/home3/addr-sel.png" alt="" />
+    				</div>
+    			</li>
+    			<li>
+    				<span>凯喜雅大厦</span>
+    				<div class="ll">
+    					<span>浙江省杭州市下城区体育场路105号</span>
+    					<img src="../../res/home3/addr-sel.png" alt="" />
+    				</div>
+    			</li>
+    		</ul>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			// 百度地图API功能
+		    var map = new BMap.Map("map");
+		    var point = new BMap.Point(108.95,34.27);
+		    map.centerAndZoom(point,12);
+		
+		    var geolocation = new BMap.Geolocation();
+		    geolocation.getCurrentPosition(function(r){
+		        if(this.getStatus() == BMAP_STATUS_SUCCESS){
+		            var mk = new BMap.Marker(r.point);
+		            map.addOverlay(mk);//标出所在地
+		            map.panTo(r.point);//地图中心移动
+		            //alert('您的位置：'+r.point.lng+','+r.point.lat);
+		            var point = new BMap.Point(r.point.lng,r.point.lat);//用所定位的经纬度查找所在地省市街道等信息
+		            var gc = new BMap.Geocoder();
+		            gc.getLocation(point, function(rs){
+		               var addComp = rs.addressComponents; 
+		               console.log(rs.address);//地址信息
+		            });
+		        }else {
+		            console.log('获取位置失败：'+this.getStatus());
+		        }        
+		    },{enableHighAccuracy: true});
+		    
+		    document.querySelector('.tips>img').addEventListener('tap',function(){
+		    	// 百度地图API功能
+			    var map = new BMap.Map("map");
+			    var point = new BMap.Point(108.95,34.27);
+			    map.centerAndZoom(point,20);
+			
+			    var geolocation = new BMap.Geolocation();
+			    geolocation.getCurrentPosition(function(r){
+			        if(this.getStatus() == BMAP_STATUS_SUCCESS){
+			            var mk = new BMap.Marker(r.point);
+			            map.addOverlay(mk);//标出所在地
+			            map.panTo(r.point);//地图中心移动
+			            //alert('您的位置：'+r.point.lng+','+r.point.lat);
+			            var point = new BMap.Point(r.point.lng,r.point.lat);//用所定位的经纬度查找所在地省市街道等信息
+			            var gc = new BMap.Geocoder();
+			            gc.getLocation(point, function(rs){
+			               var addComp = rs.addressComponents; 
+			               console.log(rs.address);//地址信息
+			            });
+			        }else {
+			            console.log('获取位置失败：'+this.getStatus());
+			        }        
+			    },{enableHighAccuracy: true});
+		    });
+		</script>
+	</body>
+
+</html>

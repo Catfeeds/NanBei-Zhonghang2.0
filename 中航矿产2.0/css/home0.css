@@ -1,0 +1,26 @@
+.content{
+	width: 100%;min-height: 5.6rem;
+	margin-top: 20px;
+	padding-left: .15rem;padding-right: .15rem;
+	background: #FFFFFF;
+	box-shadow: 0 1px 2px 0 rgba(0,0,0,0.50);
+	overflow: hidden;
+}
+.content>.application{
+	width: 100%;height: 2.4rem;
+	padding: .3rem 0;
+	border-bottom: 1px solid #DADADA;
+}
+.content>.application>li{
+	width: 1.8rem;height: 1.8rem;
+	float: left;
+	text-align: center;
+}
+.content>.application>li>img{
+	width: 1.06rem;height: 1.06rem;
+}
+.content>.application>li>span{
+	font-size: 0.28rem;
+	color: #545454;
+	margin-top: .1rem;
+}

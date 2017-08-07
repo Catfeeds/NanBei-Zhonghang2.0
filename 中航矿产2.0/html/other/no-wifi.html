@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>未联网</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/reset.css" />
+		<script src="../../js/common.js"></script>
+		<style>
+			img{
+				width: 3rem;height: 3rem;
+				display: block;
+				margin: 1.92rem auto 0;
+			}
+			#no-wifi{
+				width: 100%;
+				text-align: center;
+				color: #969696;
+				font-size: 0.32rem;
+			}
+			button{
+				width: 2.8rem;height: 0.6rem;
+				display: block;
+				text-align: center;
+				margin: 0.5rem auto;
+				background: #FFFFFF;
+				border: 0.02rem solid #0071FF;
+				border-radius: 0.02rem;
+				font-size: 0.32rem;
+				color: #0071FF;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-pull-left">返回</a>
+		</header>
+		<div class="mui-content">
+		    <img src="../../res/smicon/no-wifi.png" alt="" />
+		    <span id="no-wifi">
+		    	无法连接到网络
+		    </span>
+		    <button>重新加载</button>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,234 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>消息详情</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/reset.css" />
+		<link rel="stylesheet" href="../../css/news-detail.css" />
+		<script src="../../js/common.js"></script>
+	</head>
+
+	<body onresize="document.activeElement.scrollIntoView(true);">
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-pull-left">返回</a>
+		    <h1 class="mui-title">部门经理</h1>
+		</header>
+		<div class="mui-content">
+		    <div class="tips tips-1">2017年5月23日 20:00</div>
+		    <div class="tips tips-2">您已添加了部门经理，现在可以开始发送消息。</div>
+		    
+		    <div class="comm you">
+		    	<img src="../../res/home1/women.png" alt="" />
+		    	<div class="content">
+		    		欢迎新人加入设计部欢迎新人加入设计部欢迎新人加入设计部欢迎新人加入设计部欢迎新人加入设计部
+		    	</div>
+		    </div>
+		    <div class="comm you">
+		    	<img src="../../res/home1/women.png" alt="" />
+		    	<div class="content">
+		    		请先阅读并填写以下文件，快速了解公司以及部门规定。
+		    	</div>
+		    </div>
+		    <div class="comm you">
+		    	<img src="../../res/home1/women.png" alt="" />
+		    	<div class="content">
+		    		请先阅读并填写以下文件，快速了解公司以及部门规定。
+		    	</div>
+		    </div>
+		    <div class="comm you">
+		    	<img src="../../res/home1/women.png" alt="" />
+		    	<div class="content">
+		    		请先阅读并填写以下文件，快速了解公司以及部门规定。
+		    	</div>
+		    </div>
+		    <div class="comm you">
+		    	<img src="../../res/home1/women.png" alt="" />
+		    	<div class="content">
+		    		收到请回复
+		    	</div>
+		    </div>
+		    
+		    <div class="tips tips-1">14:33</div>
+		    
+		    <div class="comm me">
+		    	<img src="../../res/home1/man.png" alt="" />
+		    	<div class="content">
+		    		收到
+		    	</div>
+		    </div>
+		</div>
+		<nav class="mui-bar mui-bar-tab">
+			<img id="photo" src="../../res/home1/photo.png" alt="" />
+		    <img id="getImg" src="../../res/home1/gallery.png" alt="" />
+		    <input id="inputIpt" type="text" oninput="s(event)" onpropertychange="s(event)"/>
+		    <button id="send">发送</button>
+		    
+		</nav>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			function s(event){
+				var ipt = event;
+				var send = document.getElementById("send");
+				if (ipt.value != '') {
+					send.classList.add('active');
+				} else{
+					send.classList.remove('active');
+				}
+			}
+			mui.ready(function(){
+				document.getElementById('send').addEventListener('tap',function(){
+					var self = this;
+					var conDiv = document.querySelector('.mui-content');
+					var me = document.createElement('div');
+					var img = document.createElement('img');
+					var content = document.createElement('div');
+					var ipt = document.getElementById('inputIpt');
+					var con = ipt.value;
+					
+					conDiv.appendChild(me);
+					me.appendChild(img);
+					me.appendChild(content);
+					
+					me.classList.add('comm');
+					me.classList.add('me');
+					img.setAttribute('src','../../res/home1/man.png');
+					content.classList.add('content');
+					content.innerText = con;
+					
+					ipt.value="";
+					
+					self.classList.remove('active');
+				},false);
+				
+				
+				
+		        document.getElementById('getImg').addEventListener('tap', function() { 
+		        	 if (mui.os.plus){
+		        	 	galleryImg();
+		        	 }
+		            
+		        }, false);
+		        document.getElementById('photo').addEventListener('tap', function() { 
+		        	 if (mui.os.plus){
+		        	 	getImage();
+		        	 }
+		            
+		        }, false);
+		        //拍照 
+		        function getImage() { 
+		            var c = plus.camera.getCamera(); 
+		            c.captureImage(function(e) { 
+		                plus.io.resolveLocalFileSystemURL(e, function(entry) { 
+		                    var s = entry.toLocalURL() + "?version=" + new Date().getTime(); 
+		                    uploadHead(s); /*上传图片*/ 
+		                }, function(e) { 
+		                    console.log("读取拍照文件错误：" + e.message); 
+		                }); 
+		            }, function(s) { 
+		                console.log("error" + s); 
+		            }, { 
+		                filename: "_doc/head.png" 
+		            }) 
+		        } 
+		        //本地相册选择 
+		        function galleryImg() { 
+		            plus.gallery.pick(function(a) { 
+		                plus.io.resolveLocalFileSystemURL(a, function(entry) { 
+		                    plus.io.resolveLocalFileSystemURL("_doc/", function(root) { 
+		                        root.getFile("head.png", {}, function(file) { 
+		                            //文件已存在 
+		                            file.remove(function() { 
+		                                console.log("file remove success"); 
+		                                entry.copyTo(root, 'head.png', function(e) { 
+		                                        var e = e.fullPath + "?version=" + new Date().getTime(); 
+		                                        uploadHead(e); /*上传图片*/ 
+		                                        //变更大图预览的src 
+		                                        //目前仅有一张图片，暂时如此处理，后续需要通过标准组件实现 
+		                                    }, 
+		                                    function(e) { 
+		                                        console.log('copy image fail:' + e.message); 
+		                                    }); 
+		                            }, function() { 
+		                                console.log("delete image fail:" + e.message); 
+		                            }); 
+		                        }, function() { 
+		                            //文件不存在 
+		                            entry.copyTo(root, 'head.png', function(e) { 
+		                                    var path = e.fullPath + "?version=" + new Date().getTime(); 
+		                                    uploadHead(path); /*上传图片*/ 
+		                                }, 
+		                                function(e) { 
+		                                    console.log('copy image fail:' + e.message); 
+		                                }); 
+		                        }); 
+		                    }, function(e) { 
+		                        console.log("get _www folder fail"); 
+		                    }) 
+		                }, function(e) { 
+		                    console.log("读取拍照文件错误：" + e.message); 
+		                }); 
+		            }, function(a) {}, { 
+		                filter: "image" 
+		            }) 
+		        }; 
+				//上传头像图片 
+		        function uploadHead(imgPath) { 
+		            console.log("imgPath = " + imgPath); 
+		            mainImage.src = imgPath; 
+		            mainImage.style.width = "60px"; 
+		            mainImage.style.height = "60px"; 
+		 
+		            var image = new Image(); 
+		            image.src = imgPath; 
+		            image.onload = function() { 
+		                var imgData = getBase64Image(image); 
+		                /*在这里调用上传接口*/ 
+		//              mui.ajax("图片上传接口", { 
+		//                  data: { 
+		//                       
+		//                  }, 
+		//                  dataType: 'json', 
+		//                  type: 'post', 
+		//                  timeout: 10000, 
+		//                  success: function(data) { 
+		//                      console.log('上传成功'); 
+		//                  }, 
+		//                  error: function(xhr, type, errorThrown) { 
+		//                      mui.toast('网络异常，请稍后再试！'); 
+		//                  } 
+		//              }); 
+		            } 
+		    } 
+		        //将图片压缩转成base64 
+		        function getBase64Image(img) { 
+		            var canvas = document.createElement("canvas"); 
+		            var width = img.width; 
+		            var height = img.height; 
+		            // calculate the width and height, constraining the proportions 
+		            if (width > height) { 
+		                if (width > 100) { 
+		                    height = Math.round(height *= 100 / width); 
+		                    width = 100; 
+		                } 
+		            } else { 
+		                if (height > 100) { 
+		                    width = Math.round(width *= 100 / height); 
+		                    height = 100; 
+		                } 
+		            } 
+		            canvas.width = width;   /*设置新的图片的宽度*/ 
+		            canvas.height = height; /*设置新的图片的长度*/ 
+		            var ctx = canvas.getContext("2d"); 
+		            ctx.drawImage(img, 0, 0, width, height); /*绘图*/ 
+		            var dataURL = canvas.toDataURL("image/png", 0.8); 
+		            return dataURL.replace("data:image/png;base64,", ""); 
+		        }    
+			});
+		</script>
+	</body>
+
+</html>

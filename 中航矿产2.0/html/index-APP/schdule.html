@@ -1,0 +1,298 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>日程安排</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/reset.css" />
+		<link rel="stylesheet" href="../../css/schdule.css" />
+		<script src="../../js/common.js"></script>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-pull-left mui-action-back">返回</a>
+		    <h1 class="mui-title">日程安排</h1>
+		    <a class="mui-pull-right"><img src="../../res/index-APP/schdule-ips.png" alt="" /></a>
+		</header>
+		<div class="mui-content">
+		    <div class="time">
+		    	<div id="year">
+		    		<img class="flipx" src="../../res/smicon/turn-r.png" alt="" />
+		    		<span>2017年2月</span>
+		    		<img src="../../res/smicon/turn-r.png" alt="" />
+		    	</div>
+		    	<ul id="week">
+		    		<li>日</li>
+		    		<li>一</li>
+		    		<li>二</li>
+		    		<li>三</li>
+		    		<li>四</li>
+		    		<li>五</li>
+		    		<li>六</li>
+		    	</ul>
+		    	
+		    	<ul id="day">
+		    		<li class="lastMonth">
+		    			<span>27</span>
+		    			<div></div>
+		    		</li>
+		    		<li class="lastMonth">
+		    			<span>28</span>
+		    			<div></div>
+		    		</li>
+		    		<li class="lastMonth">
+		    			<span>29</span>
+		    			<div></div>
+		    		</li>
+		    		<li class="lastMonth">
+		    			<span>30</span>
+		    			<div></div>
+		    		</li>
+		    		<li>
+		    			<span>1</span>
+		    			<div></div>
+		    		</li>
+		    		<li>
+		    			<span>2</span>
+		    			<div></div>
+		    		</li>
+		    		<li>
+		    			<span>3</span>
+		    			<div></div>
+		    		</li>
+		    		<li>
+		    			<span>4</span>
+		    			<div></div>
+		    		</li>
+		    		<li>
+		    			<span>5</span>
+		    			<div></div>
+		    		</li>
+		    		<li>
+		    			<span>6</span>
+		    			<div></div>
+		    		</li>
+		    		<li>
+		    			<span>7</span>
+		    			<div></div>
+		    		</li>
+		    		<li>
+		    			<span>8</span>
+		    			<div class="holiday"></div>
+		    		</li>
+		    		<li>
+		    			<span>9</span>
+		    			<div></div>
+		    		</li>
+		    		<li>
+		    			<span class="lastday">10</span>
+		    			<div></div>
+		    		</li>
+		    		<li>
+		    			<span class="today">11</span>
+		    			<div class="holiday"></div>
+		    		</li>
+		    		<li>
+		    			<span class="tomorrow">12</span>
+		    			<div></div>
+		    		</li>
+		    		<li>
+		    			<span>13</span>
+		    			<div></div>
+		    		</li>
+		    		<li>
+		    			<span>14</span>
+		    			<div class="holiday"></div>
+		    		</li>
+		    		<li>
+		    			<span>15</span>
+		    			<div></div>
+		    		</li>
+		    		<li>
+		    			<span>16</span>
+		    			<div></div>
+		    		</li>
+		    		<li>
+		    			<span>17</span>
+		    			<div></div>
+		    		</li>
+		    		<li>
+		    			<span>18</span>
+		    			<div></div>
+		    		</li>
+		    		<li>
+		    			<span>19</span>
+		    			<div></div>
+		    		</li>
+		    		<li>
+		    			<span>20</span>
+		    			<div></div>
+		    		</li>
+		    		<li>
+		    			<span>21</span>
+		    			<div class="holiday"></div>
+		    		</li>
+		    		<li>
+		    			<span>22</span>
+		    			<div></div>
+		    		</li>
+		    		<li>
+		    			<span>23</span>
+		    			<div></div>
+		    		</li>
+		    		<li>
+		    			<span>24</span>
+		    			<div></div>
+		    		</li>
+		    		<li>
+		    			<span>25</span>
+		    			<div></div>
+		    		</li>
+		    		<li>
+		    			<span>26</span>
+		    			<div></div>
+		    		</li>
+		    		<li>
+		    			<span>27</span>
+		    			<div></div>
+		    		</li>
+		    		<li>
+		    			<span>28</span>
+		    			<div></div>
+		    		</li>
+		    		<li class="nextMonth">
+		    			<span>1</span>
+		    			<div></div>
+		    		</li>
+		    		<li class="nextMonth">
+		    			<span>2</span>
+		    			<div></div>
+		    		</li>
+		    		<li class="nextMonth">
+		    			<span>3</span>
+		    			<div></div>
+		    		</li>
+		    	</ul>
+		    </div>
+		    
+		    <div class="work">
+		    	<div class="work-none">
+		    		<span class="tit">未完成</span>
+		    		<ul id="workNone">
+		    			<li>
+		    				<div class="top">
+		    					<img src="../../res/smicon/signTime.png" alt="" />
+		    					<span>9：10</span>
+		    				</div>
+		    				<div class="bottom">
+		    					<img src="../../res/smicon/schdule-01.png" alt="" />
+		    					<span>与客户会面</span>
+		    					<img src="../../res/index-APP/high.png" alt="" />
+		    				</div>
+		    			</li>
+		    			<li>
+		    				<div class="top">
+		    					<img src="../../res/smicon/signTime.png" alt="" />
+		    					<span>10：20</span>
+		    				</div>
+		    				<div class="bottom">
+		    					<img src="../../res/smicon/schdule-01.png" alt="" />
+		    					<span>部门实施案例分析部门实施案例分析部门实施案例分析</span>
+		    					<img src="../../res/index-APP/middle.png" alt="" />
+		    				</div>
+		    			</li>
+		    		</ul>
+			    </div>
+			    
+			    <div class="work-ok">
+			    	<span class="tit">已完成</span>
+			    	<ul id="workOK">
+			    		<li>
+		    				<div class="top">
+		    					<img src="../../res/smicon/signTime.png" alt="" />
+		    					<span>13：30</span>
+		    				</div>
+		    				<div class="bottom">
+		    					<img src="../../res/smicon/schdule-02.png" alt="" />
+		    					<span>管理层例会</span>
+		    					<img src="../../res/index-APP/low.png" alt="" />
+		    				</div>
+		    			</li>
+		    			<li>
+		    				<div class="top">
+		    					<img src="../../res/smicon/signTime.png" alt="" />
+		    					<span>17：00</span>
+		    				</div>
+		    				<div class="bottom">
+		    					<img src="../../res/smicon/schdule-02.png" alt="" />
+		    					<span>公司聚餐</span>
+		    					<img src="../../res/index-APP/high.png" alt="" />
+		    				</div>
+		    			</li>
+		    			<li>
+		    				<div class="top">
+		    					<img src="../../res/smicon/signTime.png" alt="" />
+		    					<span>20：00</span>
+		    				</div>
+		    				<div class="bottom">
+		    					<img src="../../res/smicon/schdule-02.png" alt="" />
+		    					<span>看书学习</span>
+		    					<img src="../../res/index-APP/high.png" alt="" />
+		    				</div>
+		    			</li>
+			    	</ul>
+			    </div>
+		    </div>
+		    
+		</div>
+		<!--添加日程安排-->
+		<div class="fixed"><img src="../../res/index-APP/add.png" alt="" /></div>
+		<!--其他-->
+		<ul class="other mui-hidden">
+			<li></li>
+			<li class="ll">日程安排</li>
+			<li class="ll">收集箱</li>
+		</ul>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui.ready(function(){
+				mui('.mui-content').on('tap','.time',function(){
+					var self = this;
+					self.style.height = 'auto';
+				});
+				
+				mui('.mui-bar-nav').on('tap','a:last-child',function(){
+					var self = this;
+					var other = document.querySelector('.other');
+					if(other.classList.contains('mui-hidden')){
+						other.classList.remove('mui-hidden');
+					}else{
+						other.classList.add('mui-hidden');
+					}
+				});
+				document.querySelector('.mui-content').addEventListener('tap',function(){
+					var other = document.querySelector('.other');
+					other.classList.add('mui-hidden');
+				},false);
+				mui('.other').on('tap','.ll:last-child',function(){
+					mui.openWindow({
+						url:'schdule-1.html',
+						id:'schdule-1.html'
+					})
+				});
+				
+				mui('.fixed').on('tap','img',function(){
+					mui.openWindow({
+						url:'schdule-2.html',
+						id:'schdule-2.html'
+					})
+				});
+			});
+		</script>
+	</body>
+
+</html>

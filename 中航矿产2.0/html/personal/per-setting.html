@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/reset.css" />
+		<script src="../../js/common.js"></script>
+		<style>
+			ul{
+				width: 100%;height: auto;
+				margin-top: 0.2rem;
+				padding-left: 0.3rem;
+				background: #FFFFFF;
+			}
+			ul>li{
+				width: 100%;line-height: 0.98rem;
+				background: #FFFFFF;
+				border-bottom: 1px solid #DADADA;
+				overflow: hidden;
+				padding-right: 0.3rem;
+			}
+			ul>li>span{
+				font-size: 0.34rem;
+				color: #323232;
+				float: left;
+			}
+			ul>li>img{
+				width: 0.3rem;height: 0.3rem;
+				float: right;
+				margin-top: 0.3rem;
+			}
+			button{
+				width: 6.9rem;
+				height: 0.88rem;
+				display: block;
+				margin: 2rem auto 0;
+				background: #0071FF;
+				color: #FFFFFF;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-pull-left">返回</a>
+		    <h1 class="mui-title">用户设置</h1>
+		</header>
+		<div class="mui-content">
+		    <ul>
+		    	<li><span>同步协调人员信息</span><img src="../../res/smicon/turn-r.png" alt="" /></li>
+		    	<li id="clearcache"><span>清理缓存</span><img src="../../res/smicon/turn-r.png" alt="" /></li>
+		    	<li><span>关于</span><img src="../../res/smicon/turn-r.png" alt="" /></li>
+		    	<li><span>账号保护</span><img src="../../res/smicon/turn-r.png" alt="" /></li>
+		    </ul>
+		    
+		    <button id="quit-btn">退出登录</button>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui.ready(function(){
+				mui('.mui-content').on('tap','ul>#clearcache',function(){
+					//计算应用已使用的缓存数据大小,不用可注释掉
+					plus.cache.calculate( function ( size ) {
+//						alert( "Application cache size: " + size + " byte!" );
+					});
+					plus.cache.clear(function(size){
+						alert( "已清除缓存 ");
+					})
+				});
+				
+				mui('.mui-content').on('tap','#quit-btn',function(){
+					//清除缓存并退回到登录页面
+					if(mui.os.plus){
+						plus.nativeUI.confirm("此操作将退出登录",function(e){
+							//索引值为0，即点击的是第一个按钮。触发事件
+							if(e.index == 0){
+								plus.cache.clear( function () {
+									mui.openWindow({
+										url: '../../login.html',  
+									    id: '../../login.html'
+									});
+								});
+							}
+						},"退出登录?",["确定","取消"]);
+					}
+				});
+			});
+		</script>
+	</body>
+
+</html>

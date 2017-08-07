@@ -1,0 +1,267 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>添加日程</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/reset.css" />
+		<link rel="stylesheet" href="../../css/mui.picker.all.css" />
+		<link rel="stylesheet" href="../../css/schdule.css" />
+		<script src="../../js/common.js"></script>
+		<style>
+			.mui-content{
+				padding: 0.2rem 0.3rem 0;
+			}
+			.add-ul{
+				width: 100%;
+				padding-top: 0.2rem;
+				position: relative;
+			}
+			.add-ul>li{
+				width: 100%;min-height: 0.88rem;
+				/*overflow: hidden;*/
+				background: #FFFFFF;
+				border: 0.01rem solid #DADADA;
+				border-radius: 0.02rem;
+				padding-left: 0.3rem;
+				margin-bottom: 0.2rem;
+				position: relative;
+			}
+			.add-ul>li>input[type=button]{
+				width: 100%;
+				height: 0.88rem;
+				position: absolute;
+				top: 0;
+				left: 0;
+				background: transparent;
+				text-align: left;
+				color: #969696;
+				font-size: 0.3rem;
+				border: none;
+			}
+			.add-ul>li>input[type=text]{
+				width: 82%;
+				height: 0.8rem;
+				background: transparent;
+				text-align: left;
+				color: #323232;
+				font-size: 0.3rem;
+				position: absolute;
+				top: 0.02rem;
+				border: none;
+			}
+			.add-ul>li>span,.add-ul>li>label{
+				height: 0.88rem;line-height: 0.88rem;
+				font-size: 0.3rem;
+				color: #323232;
+			}
+			.add-ul>li>span{ font-weight: bold;}
+			.add-ul>li>label{
+				color: #969696;
+			}
+			.add-ul>li.btn>span{
+				float: left;
+			}
+			.add-ul>li.btn>label{
+				float: right;
+				padding-right: 0.6rem;
+				background: url(../../res/smicon/time.png)calc(95%) center no-repeat;
+				background-size: 0.3rem 0.3rem;
+			}
+			#add-w{
+				min-height: 2.88rem;
+				overflow: auto;
+			}
+			#add-w>textarea{
+				border: none;
+				font-size: 0.3rem;
+				color: #969696;
+				text-align: inherit;
+			}
+			.add-ul>li:last-child{
+				width: 100%;height: 0.88rem;
+				border: none;
+				margin-top: 0.9rem;
+				padding: 0;
+			}
+			.add-ul>li:last-child>button{
+				width: 100%;height: 100%;
+				color: #FFFFFF;
+				text-align: center;
+				background: #0071FF;
+				z-index: 2;
+			}
+			.add-ul>li>img{
+				width: 0.3rem;height: 0.3rem;
+				float: right;
+				margin-right: 0.2rem;
+				margin-top: 0.25rem;
+			}
+			
+			.add-ul>#jinz{
+				width: 6.9rem;
+				position: absolute;
+				top: 1.38rem;
+				zoom: 1;
+				z-index: 2;
+				padding: 0;
+			}
+			.add-ul>#jinz>span{
+				margin-left: 0.3rem;
+			}
+			.add-ul>#jinz>img{
+				width: 0.72rem;height: 0.3rem;
+			}
+			.add-ul>#jinz>.hide{
+				width: 100%;min-height: 2.36rem;
+				background: #FFFFFF;
+				border: 1px solid #969696;
+				border-radius: 2px;
+				padding: 0 0.2rem;
+				margin-top: 0.04rem;
+			}
+			.add-ul>#jinz>.hide>li{
+				width: 100%;
+				line-height: 0.84rem;
+				overflow: hidden;
+				border-bottom: 1px solid #DADADA;
+				padding-left: 0.1rem;
+			}
+			.add-ul>#jinz>.hide>li>span{
+				float: left;
+				font-size: 0.3rem;
+				color: #969696;
+			}
+			.add-ul>#jinz>.hide>li>img{
+				width: .7rem;height: 0.3rem;
+				float: right;
+				margin-top: 0.25rem;
+			}
+			/*日期选择设置*/
+			.mui-dtpicker-header{
+				background: #FFFFFF;
+			}
+			.mui-dtpicker-header button{
+				border: none;
+				background: transparent;
+				color: #545454;
+				font-size: 0.34rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-pull-left mui-action-back">返回</a>
+		    <h1 class="mui-title">添加日程</h1>
+		</header>
+		<div class="mui-content">
+		    <ul class="add-ul">
+		    	<!--<li><span>被授权人：</span><input type="button" value="张三"/><img src="../../res/smicon/per-c.png" alt="" /></li>-->
+		    	<!--<li><span>授权单据：</span><input type="button" value="自营出口合同；自营出口出运单"/><img src="../../res/smicon/turn-r.png" alt="" /></li>-->
+		    	<li class="btn btn1"><span>时间：</span><label id='pickDateBtn1' class="add_r2">2016-10-11 09:30</label></li>
+		    	<!--<li class="btn btn2"><span>停用时间：</span><label id='pickDateBtn2' class="add_r2">2016-10-11 09:30</label></li>-->
+		    	<li id="jinz">
+		    		<span>紧急程度：</span><img id="p" src="../../res/index-APP/high.png" alt="" />
+		    		<ul class="hide mui-hidden">
+		    			<li><span>高</span><img src="../../res/index-APP/high.png" alt="" /></li>
+		    			<li><span>中</span><img src="../../res/index-APP/middle.png" alt="" /></li>
+		    			<li><span>低</span><img src="../../res/index-APP/low.png" alt="" /></li>
+		    		</ul>
+		    	</li>
+		    	<li style="margin-top: 1.5rem;"><span>标题：</span><input type="text" value="管理层例会"/></li>
+		    	<li id="add-w" style="position: relative;">
+		    		<span>内容：</span>
+		    		<textarea id="textarea">在此输入您的日程内容。在此输入您</textarea>
+		    	</li>
+		    	<li><button>确 认</button></li>
+		    </ul>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/mui.picker.min.js"></script>
+		<script src="../../js/textarea.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			//textarea自适应
+			var text = document.getElementById("textarea");
+			autoTextarea(text);
+			mui.ready(function(){
+				mui('.add-ul').on('tap','#jinz',function(){
+					var self = this;
+					//var img = self.querySelector('img');
+					var ul = self.querySelector('.hide');
+					if (ul.classList.contains('mui-hidden')) {
+						ul.classList.remove('mui-hidden');
+					} else{
+						ul.classList.add('mui-hidden');
+					}
+				});
+				
+				mui('.hide').on('tap','li',function(){
+					var self = this;
+					var src = self.querySelector('img').src;
+					var img = document.getElementById('p');
+					img.setAttribute('src',src);
+				})
+			});
+			(function($) {
+			$.init();
+			var result1 = $('#pickDateBtn1')[0];
+			var result2 = $('#pickDateBtn2')[0];
+			var btns1 = $('.btn1');
+			var btns2 = $('.btn2');
+			btns1.each(function(i, btn) {
+				btn.addEventListener('tap', function() {
+					var optionsJson = this.getAttribute('data-options') || '{}';
+					var options = JSON.parse(optionsJson);
+					var id = this.getAttribute('id');
+					/*
+					 * 首次显示时实例化组件
+					 * 示例为了简洁，将 options 放在了按钮的 dom 上
+					 * 也可以直接通过代码声明 optinos 用于实例化 DtPicker
+					 */
+					var picker = new $.DtPicker(options);
+					picker.show(function(rs) {
+						/*
+						 * rs.value 拼合后的 value
+						 * rs.text 拼合后的 text
+						 * rs.y 年，可以通过 rs.y.vaue 和 rs.y.text 获取值和文本
+						 * rs.m 月，用法同年
+						 * rs.d 日，用法同年
+						 * rs.h 时，用法同年
+						 * rs.i 分（minutes 的第二个字母），用法同年
+						 */
+						result1.innerText = rs.text;
+						/* 
+						 * 返回 false 可以阻止选择框的关闭
+						 * return false;
+						 */
+						/*
+						 * 释放组件资源，释放后将将不能再操作组件
+						 * 通常情况下，不需要示放组件，new DtPicker(options) 后，可以一直使用。
+						 * 当前示例，因为内容较多，如不进行资原释放，在某些设备上会较慢。
+						 * 所以每次用完便立即调用 dispose 进行释放，下次用时再创建新实例。
+						 */
+						picker.dispose();
+					});
+				}, false);
+			});
+			btns2.each(function(i, btn) {
+				btn.addEventListener('tap', function() {
+					var optionsJson = this.getAttribute('data-options') || '{}';
+					var options = JSON.parse(optionsJson);
+					var id = this.getAttribute('id');
+					var picker = new $.DtPicker(options);
+					picker.show(function(rs) {
+						result2.innerText = rs.text;
+						picker.dispose();
+					});
+				}, false);
+			});
+		})(mui);
+		</script>
+	</body>
+
+</html>

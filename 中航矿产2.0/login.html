@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta http-equiv="Access-Control-Allow-Origin" content="*" />
+		<title>用户登录</title>
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<script>
+			(function(doc,win){
+				var docEl = doc.documentElement,
+					resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'riseze',
+					recalc = function(){
+						var clientWidth = docEl.clientWidth;
+						if(!clientWidth) return;
+						docEl.style.fontSize = 64 * (clientWidth / 750) + 'px';
+					};
+				recalc();
+				if(!doc.addEventListener) return;
+				win.addEventListener(resizeEvt,recalc,false);
+				doc.addEventListener('DOMContentLoaded',recalc,false);
+			})(document,window);
+		</script>
+		<link rel="stylesheet" type="text/css" href="css/my-Login.css"/>
+	</head>
+	<body>
+		<div class="mui-content" id="login">
+		    <div class="logo"><img src="res/Login/logo.png"/></div>
+		    
+		    <div class="logo_camp">中航国际矿产资源有限公司</div>
+		    
+		    <div class="login_l">
+		    	<div class="login_uer">
+		    		<div class="login_img"><img src="res/Login/user1.png"/></div>
+		    	</div>
+		    	<div style="width: 5rem;height: 0;border: 1px solid white;margin-left: 1.718rem;"></div>
+		    	<div class="login_password">
+		    		<div class="login_img"><img src="res/Login/my-password.png"/></div>
+		    	</div>
+		    </div>
+		    <div class="login_u">
+    			<input id="username" type="text" ng-model="username" placeholder="请输入注册账号" style="font-size: 12px;width: 6rem;margin-left: 10px;"/>
+    		</div>
+		    <div class="login_p">
+    			<input id="password" ng-model="password" type="password" placeholder="请正确填写口令" style="font-size: 12px;margin-left: 10px;"/>
+    		</div>
+		    		
+		    <div class="login_go">
+		    	<!--背景框设置-->
+		    </div>
+		    <div class="login-remb">
+		    	<div class="img-1" style="float: left;">
+		    		<img src="res/Login/login_yes.png" alt="" selected="selected"/><span>记住密码</span>
+		    	</div>
+		    	<div class="img-1" style="float: right;">
+		    		<img src="res/Login/login_no.png" alt="" selected=''/><span>自动登录</span>
+		    	</div>
+		    </div>
+		    
+		    <button class="login_go_btn" id="loginsubmit">登录</button>
+		    
+		     <div class="login_nanbei">北京南北天地科技股份有限公司</div> 
+		</div>		
+	</body>
+	<script type="text/javascript" src="js/mui.min.js"></script>
+	<script>
+	mui.ready(function(){
+		mui('.img-1').on('tap','img',function(){
+			var self = this;
+			var sel =self.getAttribute('selected');
+			if(!sel){
+				self.src = 'res/Login/login_yes.png';
+				self.setAttribute('selected','selected');
+			}else{
+				self.src = 'res/Login/login_no.png';
+				self.removeAttribute('selected');
+			}
+		});
+		
+		mui('#login').on('tap','#loginsubmit',function(){
+			mui.openWindow({
+				url:'index.html',
+				id:'index.html'
+			})
+		});
+	});
+	</script>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>新建邮件</title>
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css"/>
+		<link rel="stylesheet" href="../../css/reset.css" />
+		<script src="../../js/common.js"></script>
+		<style>
+			.vDiv{
+				width: 6.9rem;height: 0.88rem;
+				background: #FFFFFF;
+				border: 1px solid #969696;
+				border-radius: 2px;
+				margin: 0.2rem auto 0;
+				padding: 0 0.3rem;
+			}
+			.vDiv>span{
+				font-size: 0.32rem;
+				color: #323232;
+				font-weight: bold;
+				float: left;
+				margin-top: 0.2rem;
+			}
+			.vDiv>label{
+				font-size: 0.32rem;
+				color: #969696;
+				float: left;
+				margin-top: 0.2rem;
+			}
+			.vDiv>input[type=text]{
+				width: calc(80%);height: .8rem;
+				float: left;
+				border: none;
+				font-size: 0.32rem;
+				color: #969696;
+			}
+			.vDiv>img{
+				width: 0.4rem;height: 0.4rem;
+				float: right;
+				margin-top: 0.2rem;
+			}
+			
+			#textarea{
+				width: 6.9rem;min-height: 2.88rem;
+				display: block;
+				margin: 0.2rem auto 0;
+				background: #FFFFFF;
+				color: #969696;
+				border: 1px solid #969696;
+				border-radius: 2px;
+				padding: 0.3rem;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-pull-left">返回</a>
+		    <h1 class="mui-title">新邮件</h1>
+		    <a class="mui-pull-right">发送</a>
+		</header>
+		<div class="mui-content">
+		   	 <div class="vDiv">
+		   	 	<span>收件人：</span>
+		   	 	<label for="">李部长；王经理</label>
+		   	 	<img src="../../res/smicon/per-c.png" alt="" />
+		   	 </div>
+		   	 <div class="vDiv">
+		   	 	<span>抄送人：</span>
+		   	 	<label for="">周处长</label>
+		   	 	<img src="../../res/smicon/per-c.png" alt="" />
+		   	 </div>
+		   	 <div class="vDiv">
+		   	 	<span>主题：</span>
+		   	 	<input type="text" value="通用接口函数接口说明"/>
+		   	 </div>
+		   	 <!--以下的textarea不要改动，浏览器解析问题，<textarea> 内容内容</textarea>   必须写成一行-->
+		    <textarea id="textarea">尊敬的用户，如果邮件内容无法正常显示，请点击本邮件及其附件为机密信息，仅供制定收件人使用。若收件有误，请立即回复本邮件知会发件人并将此邮件从你的计算机系统删除。</textarea>
+		</div>
+	</body>
+	<script src="../../js/mui.min.js"></script>
+	<script src="../../js/textarea.js"></script>
+	<script>
+		mui.init();
+		//textarea自适应
+		var text = document.getElementById("textarea");
+		autoTextarea(text);
+		mui.ready(function(){
+			mui('.mui-content').on('tap','.vDiv:first-child',function(){
+				mui.openWindow({
+					url:"../other/per-change.html",
+					id:'../other/per-change.html'
+				})
+			});
+			mui('.mui-content').on('tap','.vDiv:nth-child(2)',function(){
+				mui.openWindow({
+					url:"../other/per-change.html",
+					id:'../other/per-change.html'
+				})
+			});
+		});
+	</script>
+</html>

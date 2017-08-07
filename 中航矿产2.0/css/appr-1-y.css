@@ -1,0 +1,144 @@
+.mui-content{
+	padding: 0.2rem 0.3rem 0;
+}
+.appr,.sel-per,.push{
+	width: 100%;
+	background: #FFFFFF;
+	border: 1px solid #DADADA;
+	border-radius: 0.02rem;
+	margin-top: 0.2rem;
+}
+.appr,.sel-per{min-height: 3rem;padding: .2rem 0.3rem;overflow: hidden;}
+.appr>span,.sel-per>span{
+	font-size: 0.28rem;
+	font-weight: bold;
+	color: #646464;
+}
+.appr>textarea{
+	color: #646464;
+	border: none;
+	text-align: inherit;
+	font-size: 0.28rem;
+	/*overflow: hidden;*/
+}
+.push{
+	min-height:0.96rem;
+	padding-top: 0.17rem;
+}
+.push>span{
+	float: left;
+	font-size: 0.32rem;
+	color: #646464;
+	font-weight: bold;margin-top: 0.13rem;
+	margin-left: 0.3rem;
+}
+.push>.mui-switch{
+	float: right;
+	margin-right: 0.3rem;margin-top: .08rem;
+}
+.mui-switch.mui-active{
+	background-color: #0071FF;
+	border-color: #0071FF;
+}
+.push-add{
+	width: 100%;min-height: 1.4rem;
+	overflow: hidden;
+	border-top: 1px solid #DADADA;
+	margin-top: 0.3rem;
+	padding: 0.3rem;
+}
+.push-add>li{
+	width: 1rem;height: 1rem;
+	border: 1px solid #969696;
+	border-radius: 2px;
+	float: left;
+	margin-left: 0;margin-right: 0.3rem;
+	overflow: hidden;
+	position: relative;
+}
+.push-add>li>.tips{
+	width: 0.2rem;height: 0.2rem;
+	position: absolute;
+	top: 0.06rem;right: 0.06rem;
+	display: none;
+}
+.push-add>li.active{
+	border: 1px solid green;
+	/*background: url(../res/appr-1-y/sel.png) right top no-repeat;
+	background-size: 0.2rem 0.2rem;*/
+}
+.push-add>li.active>img{
+	display: block;
+}
+.push-add>li>img{
+	width: 1rem;height: 1rem;
+}
+.push-add>#add{
+	background: url(../res/appr-1-y/add.png) center center no-repeat;
+	background-size: 100% 100%;
+}
+
+/*遮罩蒙版*/
+.fixed{
+	width: 100%;height: 100%;
+	background: rgba(0,0,0,0.3);
+	position: fixed;
+	top: 0;left: 0;
+	z-index: 9999;
+	overflow: hidden;
+}
+.fixed>.box{
+	width: 6.02rem;height: auto;
+	margin: 2.6rem auto 0;
+	overflow: hidden;
+}
+.fixed>.box>#img{
+	width: 6rem;height: 6rem;
+	background: #FFFFFF;
+	border: 1px solid #969696;
+	box-shadow: 0 0.02rem 0.04rem 0 rgba(84,84,84,0.60);
+	border-radius: 0.04rem;
+}
+.fixed>.box>#img>img{
+	max-width: 100%;
+}
+.fixed>.box>#close{
+	width: 1rem;height: 1rem;
+	border-radius: 50%;
+	margin: 0.2rem auto 0;
+	overflow: hidden;
+	background: url(../res/appr-1-y/close.png) center center no-repeat;
+	background-size: 1rem 1rem;
+}
+
+.sel-per>ul{
+	width: 100%;height: auto;
+}
+.sel-per>ul>li{
+	width: 100%;height: 0.32rem;line-height: 0.32rem;
+	padding-left: 0.1rem;
+	margin-top: 0.15rem;
+}
+.sel-per>ul>li>img{
+	width: 0.3rem;height: .3rem;
+	position: relative;
+	top: 0.03rem;
+	
+}
+.sel-per>ul>li>span{
+	font-size: 0.28rem;
+	color: #969696;
+	margin-left: 0.1rem;
+}
+.sel-per>ul>li.active>span{
+	color: #323232;
+	font-weight: bold;
+}
+.mui-bar-tab{
+	background: #545454;
+}
+.mui-tab-item>.mui-tab-label{
+	color: #FFFFFF;
+	text-align: right;
+	padding-right: 0.3rem;
+}

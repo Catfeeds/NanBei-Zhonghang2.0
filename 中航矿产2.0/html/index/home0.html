@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>消息</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/reset.css" />
+		<link rel="stylesheet" href="../../css/home1.css" />
+		<script src="../../js/common.js"></script>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<div class="search mui-indexed-list-search mui-input-row mui-search">
+		    	<input type="text" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索"/>
+		    </div>
+		    <ul class="per">
+		    	<li>
+		    		<img src="../../res/home1/man.png" alt="" />
+		    		<div class="perMsg">
+		    			<span class="tit">部门经理</span>
+		    			<span class="time">16:20</span>
+		    			<p>欢迎新人加入设计部</p>
+		    		</div>
+		    	</li>
+		    	<li>
+		    		<img src="../../res/home1/women.png" alt="" />
+		    		<div class="perMsg">
+		    			<span class="tit">部门经理</span>
+		    			<span class="time">16:20</span>
+		    			<p>欢迎新人加入设计部</p>
+		    		</div>
+		    	</li>
+		    	<li>
+		    		<img src="../../res/home1/man.png" alt="" />
+		    		<div class="perMsg">
+		    			<span class="tit">部门经理</span>
+		    			<span class="time">16:20</span>
+		    			<p>欢迎新人加入设计部</p>
+		    		</div>
+		    	</li>
+		    </ul>
+		    
+		    <div class="news-none mui-hidden">
+		    	<img src="../../res/home1/news-none.png" alt="" />
+		    	<span>暂无消息记录</span>
+		    </div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				gestureConfig:{
+					hold:true,
+   					release:true
+				}
+			});
+			mui.ready(function(){
+				mui('.per').on('hold','li',function(){
+					var self = this;
+					self.classList.add('hold');
+				});
+				mui('.per').on('release','li',function(){
+					var self = this;
+					self.classList.remove('hold');
+				});
+				mui('.per').on('tap','li',function(){
+					mui.openWindow({
+						url:'../news/news-detail.html',
+						id:'../news/news-detail.html'
+					})
+				});
+				
+				var num = document.querySelectorAll('.per>li').length;
+				var news_none = document.querySelector('.news-none');
+				var ul = document.querySelector('.per');
+				if (num == 0) {
+					ul.classList.add('mui-hidden');
+					news_none.classList.remove('mui-hidden');
+				} else{
+					ul.classList.remove('mui-hidden');
+					news_none.classList.add('mui-hidden');
+				}
+			});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,171 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>签到</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="HandheldFriendly" content="true"/>
+		<meta name="MobileOptimized" content="320"/>
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/reset.css" />
+		<link rel="stylesheet" href="../../css/home3.css" />
+		<script src="../../js/common.js"></script>
+		<style type="text/css">
+		#map {
+			width: 6.7rem;height: 4.3rem;
+			line-height: 200px;
+			text-align: center;
+		}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+		    <div class="mother">
+		    	<div class="tit">
+		    		<span id="signShow" class="active">打卡签到</span><span id="histary">历史足迹</span>
+		    	</div>
+		    	<div class="left">
+		    		<div class="gelocation">
+		    			<div id="map"></div>
+		    			<div class="tips">
+		    				<span id="addr">凯喜雅大厦</span>
+		    				<span id="addrChange">地点微调</span>
+		    			</div>
+		    		</div>
+		    		<div class="time">
+	    				<img src="../../res/smicon/signTime.png" alt="" /><span>2017年07月28日</span>
+	    				<span>星期五</span>
+	    			</div>
+		    			
+	    			<div class="click sign">
+	    				<span id="sign">签到</span>
+	    				<span id="nowTime">08:59</span>
+	    			</div>
+		    	</div>
+		    	
+		    	<div class="right mui-hidden">
+		    		<div class="per-img">
+						<img src="../../res/home1/man.png" id="imgUpload" alt="" />
+						<div class="img-sp">
+							<span id="sp-1">
+								张三
+							</span>
+							<span id="sp-2">
+								本月签到 0 次
+							</span>
+							<span id="sp-3">
+								开发部经理
+							</span>
+						</div>
+					</div>
+		    		
+		    		<div class="timeSign">
+		    			<span class="timeTit">7月27日</span>
+		    			<div class="timeBody">
+		    				<span>08:59</span>
+		    				<div class="hrefRight">
+		    					<span>凯喜雅大厦</span>
+		    					<img src="../../res/smicon/turn-r.png" alt="" />
+		    					<span>浙江省杭州市下城区体育场路105号</span>
+		    				</div>
+		    			</div>
+		    		</div>
+		    		
+		    		<div class="timeSign">
+		    			<span class="timeTit">7月27日</span>
+		    			<div class="timeBody">
+		    				<span>08:59</span>
+		    				<div class="hrefRight">
+		    					<span>凯喜雅大厦</span>
+		    					<img src="../../res/smicon/turn-r.png" alt="" />
+		    					<span>浙江省杭州市下城区体育场路105号</span>
+		    				</div>
+		    			</div>
+		    		</div>
+		    		
+		    	</div>
+		    </div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=6csB1imP6dVtbLA10q2MtxwNKD6UA3lC"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=CNSUQHW6qnCK0GvcIFT2r5iBcSdr0GAT"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui.ready(function(){
+				var left = document.querySelector('.mother').querySelector('.left');
+				var right = document.querySelector('.mother').querySelector('.right');
+				var leftSpan = document.querySelector('.tit').querySelector('#signShow');
+				mui('.tit').on('tap','span',function(){
+					var self = this;
+					var ary = self.parentNode.querySelectorAll('span');
+					for (var i = 0; i < ary.length; i++) {
+						ary[i].classList.remove('active');
+					}
+					self.classList.add('active');
+					
+					if (leftSpan.classList.contains('active')) {
+						left.classList.remove('mui-hidden');
+						right.classList.add('mui-hidden');
+					} else{
+						left.classList.add('mui-hidden');
+						right.classList.remove('mui-hidden');
+					}
+				});
+				
+				mui('.left').on('tap','.click',function(){
+					var self = this;
+					var ipt = self.querySelector('#sign');
+					if (self.classList.contains('sign')) {
+						self.classList.remove('sign');
+						self.classList.add('signed');
+						ipt.innerText = '签退';
+					} else if(self.classList.contains('signed')){
+						self.classList.remove('signed');
+						self.classList.add('finail');
+						ipt.innerText = '本日工作时间';
+					}
+				});
+				
+				mui('.right').on('tap','.timeSign',function(){
+					var self = this;
+					mui.openWindow({
+						url:'../sign/sign-detail.html',
+						id:'../sign/sign-detail.html'
+					})
+				});
+				
+				mui('.tips').on('tap','#addrChange',function(){
+					mui.openWindow({
+						url:'../sign/sign-change.html',
+						id:'../sign/sign-change.html'
+					})
+				})
+			})
+			// 百度地图API功能
+		    var map = new BMap.Map("map");
+		    var point = new BMap.Point(108.95,34.27);
+		    map.centerAndZoom(point,12);
+		
+		    var geolocation = new BMap.Geolocation();
+		    geolocation.getCurrentPosition(function(r){
+		        if(this.getStatus() == BMAP_STATUS_SUCCESS){
+		            var mk = new BMap.Marker(r.point);
+		            map.addOverlay(mk);//标出所在地
+		            map.panTo(r.point);//地图中心移动
+		            //alert('您的位置：'+r.point.lng+','+r.point.lat);
+		            var point = new BMap.Point(r.point.lng,r.point.lat);//用所定位的经纬度查找所在地省市街道等信息
+		            var gc = new BMap.Geocoder();
+		            gc.getLocation(point, function(rs){
+		               var addComp = rs.addressComponents; 
+		               console.log(rs.address);//地址信息
+		            });
+		        }else {
+		            console.log('获取位置失败：'+this.getStatus());
+		        }        
+		    },{enableHighAccuracy: true});
+		</script>
+	</body>
+
+</html>
